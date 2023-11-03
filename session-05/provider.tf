@@ -7,6 +7,6 @@ terraform {
     bucket = "roboshop-example"
     key    = "LockID"
     dynamodb_table = "rakesh"
-    aws_region = "us-east-1"
+    region = "us-east-1"
   }
 }
