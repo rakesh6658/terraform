@@ -1,25 +1,4 @@
-resource "aws_instance" "rakesh" {
-    ami = var.ami_id
-    for_each = var.instances
-    instance_type = each.value
 
-    tags =  {
-        Name = each.key
-    }
-
-}
-resource "aws_route53_record" "route53" {
-    for_each = aws_instance.rakesh
-
-  zone_id = var.zone_id
-  name    = "${each.key}.${var.zone_name}"
-  type    = "A"
-  ttl     = "1"
-  records = [each.key == "web" ? each.value.public_ip : each.value.private_ip]
-}
-output "names" {
-    value = aws_instance.rakesh
-}
 resource "aws_security_group" "allow_all" {
 
   description = "Allow defined rules"
