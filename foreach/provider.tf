@@ -6,6 +6,14 @@ terraform {
     }
   }
 
+  backend "s3" {
+    bucket = "terraform-remote1-state1"
+    key    = "foreach"
+    region = "us-east-1"
+    dynamodb_table = "terraform-remote-state"
+  
+}
+
   
 }
 
